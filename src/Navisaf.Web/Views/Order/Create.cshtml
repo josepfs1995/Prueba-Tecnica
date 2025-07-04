@@ -27,11 +27,30 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Origen Coords</label>
-            <input type="text" class="form-control" asp-for="OriginCoords" placeholder="-12.0884879,-76.9040324">
+            <!-- Por motivo de facilidad se agrega valores por defecto, en un caso real se obtendría de google maps -->
+            <select class="form-control" asp-for="OriginCoords">
+                <option value="">Seleccionar</option>
+                <option value="-12.0884879,-76.9040324">Lima, Peru</option>
+                <option value="-12.046374,-77.042793">Lima Centro, Peru</option>
+                <option value="-12.046374,-77.042793">Miraflores, Peru</option>
+                <option value="-5.1945,-80.6328">Piura, Peru</option>
+                <option value="6.2442,-75.5812">Medellin, Colombia</option>
+                <option value="4.6097,-74.0817">Bogota, Colombia</option>
+                <option value="39.9042,116.4074">Beijing, China</option>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Destination Coords</label>
-            <input type="text" class="form-control" asp-for="DestinationCoords" placeholder="-12.0884879,-76.9040324">
+            <select class="form-control" asp-for="DestinationCoords">
+                <option value="">Seleccionar</option>
+                <option value="-12.0884879,-76.9040324">Lima, Peru</option>
+                <option value="-12.046374,-77.042793">Lima Centro, Peru</option>
+                <option value="-12.046374,-77.042793">Miraflores, Peru</option>
+                <option value="-5.1945,-80.6328">Piura, Peru</option>
+                <option value="6.2442,-75.5812">Medellin, Colombia</option>
+                <option value="4.6097,-74.0817">Bogota, Colombia</option>
+                <option value="39.9042,116.4074">Beijing, China</option>
+            </select>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Crear Orden</button>
