@@ -1,0 +1,40 @@
+@model List<Navisaf.Application.Features.Orders.Queries.OrderDto>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle text-center" id="productTable">
+        <thead class="table-dark">
+        <tr>
+            <th>Cliente</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Distancia</th>
+            <th>Precio</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CustomerName</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.DistanceKilometers.ToString("F2")</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Detail" asp-route-orderid="@item.Id">Detalle</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">No hay pedidos disponibles.</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

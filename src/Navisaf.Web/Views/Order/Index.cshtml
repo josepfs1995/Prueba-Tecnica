@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h2 class="mb-4">Lista de Ordenes</h2>
+    <div class="row g-3">
+        <div class="col-10">
+            <label for="customerName" class="visually-hidden">Buscar por nombre de cliente</label>
+            <input type="text" class="form-control" id="customerName" placeholder="Buscar por nombre de cliente">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" id="btnSearch">Buscar</button>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-success mb-3" asp-area="" asp-controller="Order" asp-action="Create">Crear</a>
+        </div>
+    </div>
+    <div id="divOrders">
+    </div>
+</div>
+
+@section Scripts {
+    <script type="module">
+        // Importing a module script
+        import {listOrders, searchOrder} from '/js/modules/order.js';
+        // Example of a simple script to enhance the page
+        document.addEventListener('DOMContentLoaded', function () {
+            listOrders();
+            document.getElementById('btnSearch').addEventListener('click', function () {
+                searchOrder();
+            });
+        });
+    </script>
+}

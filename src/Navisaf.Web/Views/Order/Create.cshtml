@@ -1,0 +1,51 @@
+﻿@using Navisaf.Application.Features.Products.Queries
+@model Navisaf.Application.Features.Orders.Command.CreateOrderCommand
+@{
+    var products = ViewBag.Products as IEnumerable<ProductDto>;
+    var selectListItem = new SelectList(products, "Id", "Name");
+}
+
+<div class="container">
+    <form class="row" method="post" id="formOrder">
+        <div class="mb-3">
+            <label class="form-label">Producto</label>
+            <select asp-items="selectListItem" class="form-select" asp-for="ProductId">
+                <option value="">Seleccionar</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad</label>
+            <input type="number" class="form-control" asp-for="Quantity" min="1" step="1">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha</label>
+            <input type="date" class="form-control" asp-for="OrderDate">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cliente</label>
+            <input type="text" class="form-control" asp-for="CustomerName">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Origen Coords</label>
+            <input type="text" class="form-control" asp-for="OriginCoords" placeholder="-12.0884879,-76.9040324">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Destination Coords</label>
+            <input type="text" class="form-control" asp-for="DestinationCoords" placeholder="-12.0884879,-76.9040324">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Crear Orden</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="module">
+        // Importing a module script
+        import {createOrder} from '/js/modules/order.js';
+        // Example of a simple script to enhance the page
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('formOrder').addEventListener('submit', createOrder);
+        });
+    </script>
+}

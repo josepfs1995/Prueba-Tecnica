@@ -1,0 +1,53 @@
+﻿@model List<Navisaf.Application.Features.Orders.Queries.ReportDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h2 class="mb-4">Reporte de Ordenes</h2>
+    <div class="row">
+        <div class="col-md-2 offset-md-10">
+            <button class="btn btn-success" id="btnDownloadExcel">Exportar Excel</button>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Periodo</th>
+                    <th>Total pedidos</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CustomerName</td>
+                            <td>@item.Period</td>
+                            <td>@item.TotalOrders</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">No hay pedidos.</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script type="module">
+        import { downloadExcelReport} from '/js/modules/order.js';
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('btnDownloadExcel').addEventListener('click', downloadExcelReport);
+        });
+    </script>
+}
